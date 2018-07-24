@@ -315,7 +315,7 @@
             ], [VERSION, [NAME, 'Chrome Headless']], [
 
             /\swv\).+(chrome)\/([\w\.]+)/i                                      // Chrome WebView
-            ], [[NAME, /(.+)/, '$1 WebView'], VERSION], [
+            ], [[NAME, 'Chrome WebView'], VERSION], [
 
             /((?:oculus|samsung)browser)\/([\w\.]+)/i
             ], [[NAME, /(.+(?:g|us))(.+)/, '$1 $2'], VERSION], [                // Oculus / Samsung Browser
@@ -323,7 +323,13 @@
             /android.+version\/([\w\.]+)\s+(?:mobile\s?safari|safari)*/i        // Android Browser
             ], [VERSION, [NAME, 'Android Browser']], [
 
-            /(chrome|omniweb|arora|[tizenoka]{5}\s?browser)\/v?([\w\.]+)/i
+                       /(omniweb|arora|[tizenoka]{5}\s?browser)\/v?([\w\.]+)/i             // OmniWeb/Arora/Tizen/Nokia
+           ], [NAME, VERSION], [
+
+            /(chrome)\/([\w\.]+) Mobile/i                                      // Chrome Mobile
+          ], [[NAME, 'Chrome Mobile'], VERSION], [
+
+          /(chrome)\/v?([\w\.]+)/i
                                                                                 // Chrome/OmniWeb/Arora/Tizen/Nokia
             ], [NAME, VERSION], [
 
@@ -335,9 +341,12 @@
 
             /(coast)\/([\w\.]+)/i                                               // Opera Coast
             ], [[NAME, 'Opera Coast'], VERSION], [
+                
+            /(?:mobile|tablet);.*(firefox)\/([\w\.-]+)/i                        // Firefox Mobile
+           ], [[NAME, 'Firefox Mobile'], VERSION], [
 
             /fxios\/([\w\.-]+)/i                                                // Firefox for iOS
-            ], [VERSION, [NAME, 'Firefox']], [
+            ], [VERSION, [NAME, 'Firefox Mobile']], [
 
             /version\/([\w\.]+).+?mobile\/\w+\s(safari)/i                       // Mobile Safari
             ], [VERSION, [NAME, 'Mobile Safari']], [
